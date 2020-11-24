@@ -1,13 +1,16 @@
 package com.fernando.workshopmongo.domain;
 
+import com.fernando.workshopmongo.dto.AuthorDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 @Document
-public class Post {
+public class Post implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     private String id;
@@ -15,17 +18,17 @@ public class Post {
     private String title;
     private String body;
 
-    private User user;
+    private AuthorDto author;
 
     public Post() {
     }
 
-    public Post(String id, Date date, String title, String body, User user) {
+    public Post(String id, Date date, String title, String body, AuthorDto author) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.body = body;
-        this.user = user;
+        this.author = author;
     }
 
     public String getId() {
@@ -60,12 +63,12 @@ public class Post {
         this.body = body;
     }
 
-    public User getUser() {
-        return user;
+    public AuthorDto getUser() {
+        return author;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(AuthorDto user) {
+        this.author = user;
     }
 
     @Override
