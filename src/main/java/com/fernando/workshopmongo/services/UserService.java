@@ -23,4 +23,8 @@ public class UserService {
         Optional<User> user = repository.findById(id);
         return user.orElseThrow(() -> new ObjectNotFoundException("Unexpected error: user not found"));
     }
+
+    public User insert(User user) {
+        return repository.insert(user);
+    }
 }
