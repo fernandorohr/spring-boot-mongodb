@@ -33,12 +33,6 @@ public class UserResource {
         return ResponseEntity.ok().body(new UserDto(user));
     }
 
-    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
-    public ResponseEntity<List<Post>> findPost(@PathVariable String id) {
-        User user = service.findById(id);
-        return ResponseEntity.ok().body(user.getPosts());
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> findById(@RequestBody UserDto userDto) {
         User user = userDto.fromDto(userDto);
@@ -59,5 +53,11 @@ public class UserResource {
         user.setId(id);
         service.update(user);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPost(@PathVariable String id) {
+        User user = service.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 }
