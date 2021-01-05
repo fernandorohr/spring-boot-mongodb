@@ -5,7 +5,6 @@ import com.fernando.workshopmongo.repository.PostRepository;
 import com.fernando.workshopmongo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +15,11 @@ public class PostService {
     @Autowired
     PostRepository repository;
 
-    public Post findById(String id){
+    public List<Post> findAll() {
+        return repository.findAll();
+    }
+
+    public Post findById(String id) {
         Optional<Post> post = repository.findById(id);
         return post.orElseThrow(() -> new ObjectNotFoundException("Unexpected error: post not found"));
     }

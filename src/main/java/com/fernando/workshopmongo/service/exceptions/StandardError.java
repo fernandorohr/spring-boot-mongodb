@@ -1,4 +1,4 @@
-package com.fernando.workshopmongo.resources.exceptions;
+package com.fernando.workshopmongo.service.exceptions;
 
 import java.io.Serializable;
 

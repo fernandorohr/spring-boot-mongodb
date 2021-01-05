@@ -1,7 +1,7 @@
-package com.fernando.workshopmongo.resources;
+package com.fernando.workshopmongo.service;
 
 import com.fernando.workshopmongo.domain.Post;
-import com.fernando.workshopmongo.resources.util.URL;
+import com.fernando.workshopmongo.service.util.URL;
 import com.fernando.workshopmongo.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +15,12 @@ public class PostResource {
 
     @Autowired
     PostService service;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findAll() {
+        List<Post> posts = service.findAll();
+        return ResponseEntity.ok().body(posts);
+    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Post> findById(@PathVariable String id) {

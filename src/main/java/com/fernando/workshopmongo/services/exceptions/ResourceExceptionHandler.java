@@ -1,6 +1,6 @@
 package com.fernando.workshopmongo.services.exceptions;
 
-import com.fernando.workshopmongo.resources.exceptions.StandardError;
+import com.fernando.workshopmongo.service.exceptions.StandardError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

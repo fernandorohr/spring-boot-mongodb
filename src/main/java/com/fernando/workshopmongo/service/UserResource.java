@@ -1,4 +1,4 @@
-package com.fernando.workshopmongo.resources;
+package com.fernando.workshopmongo.service;
 
 import com.fernando.workshopmongo.domain.Post;
 import com.fernando.workshopmongo.domain.User;
@@ -34,7 +34,7 @@ public class UserResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> findById(@RequestBody UserDto userDto) {
+    public ResponseEntity<Void> insert(@RequestBody UserDto userDto) {
         User user = userDto.fromDto(userDto);
         user = service.insert(user);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
